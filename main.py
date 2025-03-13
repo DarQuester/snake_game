@@ -37,12 +37,12 @@ class SnakeBlock:
         return isinstance(other, SnakeBlock) and self.x == other.x and self.y == other.y
 
 
-
 def draw_block(color, row, column):
     pygame.draw.rect(screen, color, [SIZE_BLOCK + column * SIZE_BLOCK + MARGIN * (column + 1),
                                      HEADER_MARGIN + SIZE_BLOCK + row * SIZE_BLOCK + MARGIN * (row + 1),
                                      SIZE_BLOCK,
                                      SIZE_BLOCK])
+
 
 def start_the_game():
     def get_random_empty_block():
@@ -53,7 +53,6 @@ def start_the_game():
             empty_block.x = random.randint(0, COUNT_BLOCKS - 1)
             empty_block.y = random.randint(0, COUNT_BLOCKS - 1)
         return empty_block
-
 
     snake_blocks = [SnakeBlock(9, 8), SnakeBlock(9, 9), SnakeBlock(9, 10)]
     apple = get_random_empty_block()
@@ -132,11 +131,10 @@ def start_the_game():
         timer.tick(3 + speed)
 
 
-
 main_theme = pygame_menu.themes.THEME_ORANGE.copy()
 main_theme.set_background_color_opacity(0.0)
 menu = pygame_menu.Menu('', 460, 530,
-                       theme=main_theme)
+                        theme=main_theme)
 
 menu.add.text_input('Имя :', default='Игрок 1')
 menu.add.button('Играть', start_the_game)
